@@ -123,6 +123,13 @@ const fr: Translations = {
         "Aucun favori n'a été ajouté pour le moment. Appuyez sur le cœur d'un épisode pour l'ajouter à vos favoris !",
     },
   },
+  productListScreen: {
+    noFiltersEmptyState: {
+      heading: "This looks a bit empty",
+      content:
+        "No filters have been added yet. Tap the category to add it to your list!",
+    },
+  }
 }
 
 export default fr

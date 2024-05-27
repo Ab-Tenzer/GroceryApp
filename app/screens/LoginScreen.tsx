@@ -20,10 +20,9 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
   } = useStores()
 
   useEffect(() => {
-    // Here is where you could fetch credentials from keychain or storage
-    // and pre-fill the form fields.
-    setAuthEmail("ignite@infinite.red")
-    setAuthPassword("ign1teIsAwes0m3")
+    // Pre-filling the email and password fields for testing purposes
+    setAuthEmail("abs@checkers60.co.za")
+    setAuthPassword("60seconds")
 
     // Return a "cleanup" function that React will run when the component unmounts
     return () => {
@@ -46,7 +45,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
     setAuthPassword("")
     setAuthEmail("")
 
-    // We'll mock this with a fake token.
+    // Mocking this with a fake token.
     setAuthToken(String(Date.now()))
   }
 
@@ -71,6 +70,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
       preset="auto"
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
+      style={$root}
     >
       <Text testID="login-heading" tx="loginScreen.signIn" preset="heading" style={$signIn} />
       <Text tx="loginScreen.enterDetails" preset="subheading" style={$enterDetails} />
@@ -117,6 +117,9 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
   )
 })
 
+const $root: ViewStyle = {
+  backgroundColor: colors.background,
+}
 const $screenContentContainer: ViewStyle = {
   paddingVertical: spacing.xxl,
   paddingHorizontal: spacing.lg,
@@ -141,4 +144,5 @@ const $textField: ViewStyle = {
 
 const $tapButton: ViewStyle = {
   marginTop: spacing.xs,
+  backgroundColor: colors.palette.secondary500,
 }

@@ -1,28 +1,26 @@
-// TODO: write documentation for colors and palette in own markdown file and add links from here
-
 const palette = {
   neutral100: "#FFFFFF",
-  neutral200: "#F4F2F1",
+  neutral200: "#F8FCFD",
   neutral300: "#D7CEC9",
   neutral400: "#B6ACA6",
   neutral500: "#978F8A",
   neutral600: "#564E4A",
-  neutral700: "#3C3836",
-  neutral800: "#191015",
+  neutral700: "#EF7160",
+  neutral800: "#31B2A9",
   neutral900: "#000000",
 
   primary100: "#F4E0D9",
   primary200: "#E8C1B4",
   primary300: "#DDA28E",
   primary400: "#D28468",
-  primary500: "#C76542",
+  primary500: "#42B9B3",
   primary600: "#A54F31",
 
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
   secondary300: "#9196B9",
   secondary400: "#626894",
-  secondary500: "#41476E",
+  secondary500: "#F58D7A",
 
   accent100: "#FFEED4",
   accent200: "#FFE1B2",
@@ -40,8 +38,7 @@ const palette = {
 export const colors = {
   /**
    * The palette is available to use, but prefer using the name.
-   * This is only included for rare, one-off cases. Try to use
-   * semantic names as much as possible.
+   * This is only included for rare, one-off cases.
    */
   palette,
   /**
@@ -67,7 +64,7 @@ export const colors = {
   /**
    * The main tinting color.
    */
-  tint: palette.primary500,
+  tint: palette.secondary500,
   /**
    * A subtle color used for lines.
    */

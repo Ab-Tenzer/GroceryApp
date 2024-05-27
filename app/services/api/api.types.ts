@@ -2,37 +2,20 @@
  * These types indicate the shape of the data you expect to receive from your
  * API endpoint, assuming it's a JSON object like we have.
  */
-export interface EpisodeItem {
-  title: string
-  pubDate: string
-  link: string
-  guid: string
-  author: string
-  thumbnail: string
-  description: string
-  content: string
-  enclosure: {
-    link: string
-    type: string
-    length: number
-    duration: number
-    rating: { scheme: string; value: string }
-  }
-  categories: string[]
+
+export interface ProductItem {
+  name: string
+  price: number
+  quantity_available: number
+  image: string
+  type: string
 }
 
-export interface ApiFeedResponse {
+export interface ApiProductResponse {
   status: string
-  feed: {
-    url: string
-    title: string
-    link: string
-    author: string
-    description: string
-    image: string
-  }
-  items: EpisodeItem[]
+  products: ProductItem[]
 }
+
 
 /**
  * The options used to configure apisauce.

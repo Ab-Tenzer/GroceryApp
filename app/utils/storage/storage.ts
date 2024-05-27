@@ -9,7 +9,7 @@ export async function loadString(key: string): Promise<string | null> {
   try {
     return await AsyncStorage.getItem(key)
   } catch {
-    // not sure why this would fail... even reading the RN docs I'm unclear
+    // not sure why this would fail...
     return null
   }
 }
@@ -70,7 +70,7 @@ export async function remove(key: string): Promise<void> {
 }
 
 /**
- * Burn it all to the ground.
+ * Clears all storage for your app.
  */
 export async function clear(): Promise<void> {
   try {

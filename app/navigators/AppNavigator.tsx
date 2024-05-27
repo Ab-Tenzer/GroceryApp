@@ -1,6 +1,6 @@
 /**
  * The app navigator (formerly "AppNavigator" and "MainNavigator") is used for the primary
- * navigation flows of your app.
+ * navigation flows of the app.
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
@@ -38,8 +38,12 @@ export type AppStackParamList = {
   Welcome: undefined
   Login: undefined
   Demo: NavigatorScreenParams<DemoTabParamList>
-  // 🔥 Your screens go here
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  Onboarding: undefined
+	ProductList: undefined
+	ProductDetail: undefined
+	Cart: undefined
+	Search: undefined
+	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -64,11 +68,13 @@ const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
-      initialRouteName={isAuthenticated ? "Welcome" : "Login"}
+      // initialRouteName={isAuthenticated ? "Welcome" : "Login"}
+      initialRouteName={isAuthenticated ? "Onboarding" : "Login"}
     >
       {isAuthenticated ? (
         <>
-          <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
+          <Stack.Screen name="Onboarding" component={Screens.OnboardingScreen} />
+          {/* <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} /> */}
 
           <Stack.Screen name="Demo" component={DemoNavigator} />
         </>
@@ -78,8 +84,12 @@ const AppStack = observer(function AppStack() {
         </>
       )}
 
-      {/** 🔥 Your screens go here */}
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      {/* <Stack.Screen name="Onboarding" component={Screens.OnboardingScreen} /> */}
+			<Stack.Screen name="ProductList" component={Screens.ProductListScreen} />
+			<Stack.Screen name="ProductDetail" component={Screens.ProductDetailScreen} />
+			<Stack.Screen name="Cart" component={Screens.CartScreen} />
+			<Stack.Screen name="Search" component={Screens.SearchScreen} />
+			{/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
 })

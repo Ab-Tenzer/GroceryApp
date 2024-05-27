@@ -1,20 +1,21 @@
 import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { CompositeScreenProps } from "@react-navigation/native"
-import React from "react"
+import { CompositeScreenProps, useNavigation } from "@react-navigation/native"
+import React, { useEffect } from "react"
 import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { Icon } from "../components"
 import { translate } from "../i18n"
-import { DemoCommunityScreen, DemoShowroomScreen, DemoDebugScreen } from "../screens"
-import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
+import { DemoDebugScreen, CartScreen, SearchScreen } from "../screens"
+import { ProductListScreen } from "../screens/ProductListScreen"
 import { colors, spacing, typography } from "../theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
+import { useStores } from "app/models"
+import { FontAwesome5 } from "@expo/vector-icons"
 
 export type DemoTabParamList = {
-  DemoCommunity: undefined
-  DemoShowroom: { queryIndex?: string; itemIndex?: string }
+  ProductList: undefined
+  Cart: undefined
+  Search: undefined
   DemoDebug: undefined
-  DemoPodcastList: undefined
 }
 
 /**
@@ -30,7 +31,7 @@ export type DemoTabScreenProps<T extends keyof DemoTabParamList> = CompositeScre
 const Tab = createBottomTabNavigator<DemoTabParamList>()
 
 /**
- * This is the main navigator for the demo screens with a bottom tab bar.
+ * This is the main navigator for the products and cart screens with a bottom tab bar.
  * Each tab is a stack navigator with its own set of screens.
  *
  * More info: https://reactnavigation.org/docs/bottom-tab-navigator/
@@ -38,6 +39,14 @@ const Tab = createBottomTabNavigator<DemoTabParamList>()
  */
 export function DemoNavigator() {
   const { bottom } = useSafeAreaInsets()
+  const { productStore } = useStores()
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    navigation.setOptions({
+      tabBarBadge: productStore.formattedTotalCartPrice, // Assessment requirement met
+    })
+  }, [productStore.formattedTotalCartPrice])
 
   return (
     <Tab.Navigator
@@ -52,35 +61,40 @@ export function DemoNavigator() {
       }}
     >
       <Tab.Screen
-        name="DemoShowroom"
-        component={DemoShowroomScreen}
+        name="ProductList"
+        component={ProductListScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.componentsTab"),
+          tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused ? colors.tint : undefined} size={30} />
+            <FontAwesome5 name="home" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
 
       <Tab.Screen
-        name="DemoCommunity"
-        component={DemoCommunityScreen}
+        name="Cart"
+        component={CartScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.communityTab"),
+          tabBarLabel: "Cart",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused ? colors.tint : undefined} size={30} />
+            <FontAwesome5
+              name="shopping-basket"
+              size={30}
+              color={focused ? colors.tint : undefined}
+            />
           ),
+          tabBarBadge: productStore.formattedTotalCartPrice,
         }}
       />
 
       <Tab.Screen
-        name="DemoPodcastList"
-        component={DemoPodcastListScreen}
+        name="Search"
+        component={SearchScreen}
         options={{
           tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
-          tabBarLabel: translate("demoNavigator.podcastListTab"),
+          tabBarLabel: "Search",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.tint : undefined} size={30} />
+            <FontAwesome5 name="search" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
@@ -89,9 +103,9 @@ export function DemoNavigator() {
         name="DemoDebug"
         component={DemoDebugScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.debugTab"),
+          tabBarLabel: "Profile",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
+            <FontAwesome5 name="user-circle" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
