@@ -2,7 +2,7 @@
 Grocery App
 
 ## Demo link:
-Access my site at [google.com](https://google.com)
+I'll try put a Snack link here
 
 ## Table of Content:
 
@@ -16,7 +16,7 @@ Access my site at [google.com](https://google.com)
 - [License](#license)
 
 ## About The App
-The Grocery app is uilt with Ignite CLI and simply allows you to Sign in, then it takes you through the onboarding process. 
+The Grocery app is built with Ignite CLI and simply allows you to Sign in, then it takes you through the onboarding process. 
 Inside the app you'll have a Home screen where you get a list of available products which you can add to your cart. 
 The Cart resides on a different screen. It has a tab icon that shows the basket total. 
 
@@ -47,11 +47,9 @@ These instructions will get you a copy of the project up and running on your loc
 - Ignite CLI
 - Expo
 
-### Installation
+## Setup
 
 1. Clone the repo
-
-## Setup
 - download or clone the repository
 
 2. Install NPM packages
@@ -67,7 +65,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Status
 The basic requirements of the assignment have all been met. 
 
-Here are a few kinks:
+But let me not a few kinks:
 
 ## Credits
 The Ignite CLI
