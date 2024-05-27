@@ -21,7 +21,10 @@ Inside the app you'll have a Home screen where you get a list of available produ
 The Cart resides on a different screen. It has a tab icon that shows the basket total. 
 
 ## Screenshots
-
+![Sign in](https://github.com/Ab-Tenzer/GroceryApp/blob/main/assets/screenshots/Sign%20in.png)
+![Onboarding](https://github.com/Ab-Tenzer/GroceryApp/blob/main/assets/screenshots/Onboarding%201.png)
+![Home](https://github.com/Ab-Tenzer/GroceryApp/blob/main/assets/screenshots/Home.png)
+![Cart](https://github.com/Ab-Tenzer/GroceryApp/blob/main/assets/screenshots/Cart.png)
 
 ## Technologies
 
